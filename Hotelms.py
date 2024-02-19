@@ -26,6 +26,9 @@ class HotelReservation:
     }
 
     def init(self):
+        """
+        Initialize HotelReservation instance with default values.
+        """
         print("\n\n*WELCOME TO HEWING HOTEL*\n")
         self.room_rent = 0
         self.food_bill = 0
@@ -35,6 +38,9 @@ class HotelReservation:
         self.room_number = 101
 
     def input_data(self):
+        """
+        Collect customer data including name, address, check-in date, and check-out date.
+        """
         self.name = input("\nEnter your name: ")
         self.address = input("\nEnter your address: ")
         self.check_in_date = input("\nEnter your check-in date: ")
@@ -43,6 +49,9 @@ class HotelReservation:
         self.room_number += 1
 
     def calculate_room_rent(self):
+        """
+        Calculate room rent based on the selected room type and number of nights stayed.
+        """
         print("We have the following rooms for you:-")
         print("1. Type A - Rs 6000 PN")
         print("2. Type B - Rs 5000 PN")
@@ -63,6 +72,9 @@ class HotelReservation:
         print("Your room rent is =", self.room_rent, "\n")
 
     def calculate_restaurant_bill(self):
+        """
+        Calculate food bill based on the selected items from the restaurant menu.
+        """
         print("*RESTAURANT MENU*")
         for key, value in self.RESTAURANT_MENU.items():
             print(f"{key}. {value['name']} ----> Rs {value['price']}")
@@ -80,6 +92,9 @@ class HotelReservation:
         print("Total food Cost = Rs", self.food_bill, "\n")
 
     def calculate_laundry_bill(self):
+        """
+        Calculate laundry bill based on the selected items from the laundry menu.
+        """
         print("**LAUNDRY OPTIONS*")
         for key, value in self.LAUNDRY_OPTIONS.items():
             print(f"{key}. {value['name']} ----> Rs {value['price']}")
@@ -97,6 +112,9 @@ class HotelReservation:
         print("Total Laundry Cost = Rs", self.laundry_bill, "\n")
 
     def calculate_game_bill(self):
+        """
+        Calculate game bill based on the selected items from the game menu.
+        """
         print("**GAME SELECTIONS*")
         for key, value in self.GAME_SELECTIONS.items():
             print(f"{key}. {value['name']} ----> Rs {value['price']}")
@@ -114,6 +132,9 @@ class HotelReservation:
         print("Total Game Bill = Rs", self.game_bill, "\n")
 
     def show_total_cost(self):
+        """
+        To show the total cost including room rent, food bill, laundry bill, additional charges, and grand total.
+        """
         total_cost = self.room_rent + self.food_bill + self.laundry_bill + self.game_bill + self.additional_charges
         print("**HOTEL BILL**")
         print("Customer details:")
@@ -131,6 +152,9 @@ class HotelReservation:
         print("Your grand total bill is:", total_cost)
 
 def main():
+    """
+    Main function to initialize HotelReservation instance and handle user interactions.
+    """
     hotel_reservation = HotelReservation()
     
     while True:
