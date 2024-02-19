@@ -1,1 +1,165 @@
-class hotelfarecal:    def __init__(self,rt='',s=0,p=0,r=0,t=0,a=1800,name='',address='',cindate='',coutdate='',rno=101):        print ("\n\n*****WELCOME TO HEWING HOTEL*****\n")        self.rt=rt        self.r=r        self.t=t        self.p=p        self.s=s        self.a=a        self.name=name        self.address=address        self.cindate=cindate        self.coutdate=coutdate        self.rno=rno    def inputdata(self):        self.name=input("\nEnter your name:")        self.address=input("\nEnter your address:")        self.cindate=input("\nEnter your check in date:")        self.coutdate=input("\nEnter your checkout date:")        print("Your room no.:",self.rno,"\n")            def roomrent(self):#sel1353        print ("We have the following rooms for you:-")        print ("1.  type A---->rs 6000 PN\-")        print ("2.  type B---->rs 5000 PN\-")        print ("3.  type C---->rs 4000 PN\-")        print ("4.  type D---->rs 3000 PN\-")        x=int(input("Enter Your Choice Please->"))        n=int(input("For How Many Nights Did You Stay:"))        if(x==1):            print ("you have opted room type A")            self.s=6000*n        elif (x==2):            print ("you have opted room type B")            self.s=5000*n        elif (x==3):            print ("you have opted room type C")            self.s=4000*n        elif (x==4):            print ("you have opted room type D")            self.s=3000*n        else:            print ("please choose a room")        print ("your room rent is =",self.s,"\n")    def restaurentbill(self):        print("*****RESTAURANT MENU*****")        print("1.water----->Rs20","2.tea----->Rs10","3.breakfast combo--->Rs90","4.lunch---->Rs110","5.dinner--->Rs150","6.Exit")        while (1):            c=int(input("Enter your choice:"))            if (c==1):                d=int(input("Enter the quantity:"))                self.r=self.r+20*d            elif (c==2):                 d=int(input("Enter the quantity:"))                 self.r=self.r+10*d            elif (c==3):                 d=int(input("Enter the quantity:"))                 self.r=self.r+90*d            elif (c==4):                 d=int(input("Enter the quantity:"))                 self.r=self.r+110*d            elif (c==5):                 d=int(input("Enter the quantity:"))                 self.r=self.r+150*d            elif (c==6):                break;            else:                print("Invalid option")        print ("Total food Cost=Rs",self.r,"\n")    def	laundrybill(self):        print ("******LAUNDRY MENU*******")        print ("1.Shorts----->Rs3","2.Trousers----->Rs4","3.Shirt--->Rs5","4.Jeans---->Rs6","5.Girlsuit--->Rs8","6.Exit")        while (1):            #brought to you by code-projects.org            e=int(input("Enter your choice:"))            if (e==1):                f=int(input("Enter the quantity:"))                self.t=self.t+3*f            elif (e==2):                f=int(input("Enter the quantity:"))                self.t=self.t+4*f            elif (e==3):                f=int(input("Enter the quantity:"))                self.t=self.t+5*f            elif (e==4):                f=int(input("Enter the quantity:"))                self.t=self.t+6*f            elif (e==5):                f=int(input("Enter the quantity:"))                self.t=self.t+8*f            elif (e==6):                break;            else:                print ("Invalid option")        print ("Total Laundary Cost=Rs",self.t,"\n")    def gamebill(self):        print ("******GAME MENU*******")        print ("1.Table tennis----->Rs60","2.Bowling----->Rs80","3.Snooker--->Rs70","4.Video games---->Rs90","5.Pool--->Rs50==6","6.Exit")        while (1):                        g=int(input("Enter your choice:"))            if (g==1):                h=int(input("No. of hours:"))                self.p=self.p+60*h            elif (g==2):                h=int(input("No. of hours:"))                self.p=self.p+80*h            elif (g==3):                h=int(input("No. of hours:"))                self.p=self.p+70*h            elif (g==4):                h=int(input("No. of hours:"))                self.p=self.p+90*h            elif (g==5):                h=int(input("No. of hours:"))                self.p=self.p+50*h            elif (g==6):                break;            else:                print ("Invalid option")        print ("Total Game Bill=Rs",self.p,"\n")    def display(self):        print ("******HOTEL BILL******")        print ("Customer details:")        print ("Customer name:",self.name)        print ("Customer address:",self.address)        print ("Check in date:",self.cindate)        print ("Check out date",self.coutdate)        print ("Room no.",self.rno)        print ("Your Room rent is:",self.s)        print ("Your Food bill is:",self.r)        print ("Your laundary bill is:",self.t)        print ("Your Game bill is:",self.p)        self.rt=self.s+self.t+self.p+self.r        print ("Your sub total bill is:",self.rt)        print ("Additional Service Charges is",self.a)        print ("Your grandtotal bill is:",self.rt+self.a,"\n")        self.rno+=1                            def main():    a=hotelfarecal()        while (1):        print("1.Enter Customer Data")                print("2.Calculate rommrent")        print("3.Calculate restaurant bill")        print("4.Calculate laundry bill")        print("5.Calculate gamebill")        print("6.Show total cost")        print("7.EXIT")        b=int(input("\nEnter your choice:"))        if (b==1):            a.inputdata()        if (b==2):            a.roomrent()        if (b==3):            a.restaurentbill()        if (b==4):            a.laundrybill()        if (b==5):            a.gamebill()        if (b==6):            a.display()        if (b==7):            quit()main()
+import sys
+
+class HotelReservation:
+    RESTAURANT_MENU = {
+        1: {"name": "water", "price": 20},
+        2: {"name": "tea", "price": 10},
+        3: {"name": "breakfast combo", "price": 90},
+        4: {"name": "lunch", "price": 110},
+        5: {"name": "dinner", "price": 150}
+    }
+
+    LAUNDRY_OPTIONS = {
+        1: {"name": "Shorts", "price": 3},
+        2: {"name": "Trousers", "price": 4},
+        3: {"name": "Shirt", "price": 5},
+        4: {"name": "Jeans", "price": 6},
+        5: {"name": "Girlsuit", "price": 8}
+    }
+
+    GAME_SELECTIONS = {
+        1: {"name": "Table tennis", "price": 60},
+        2: {"name": "Bowling", "price": 80},
+        3: {"name": "Snooker", "price": 70},
+        4: {"name": "Video games", "price": 90},
+        5: {"name": "Pool", "price": 50}
+    }
+
+    def _init_(self):
+        print("\n\n**WELCOME TO HEWING HOTEL**\n")
+        self.room_rent = 0
+        self.food_bill = 0
+        self.laundry_bill = 0
+        self.game_bill = 0
+        self.additional_charges = 1800
+        self.room_number = 101
+
+    def input_data(self):
+        self.name = input("\nEnter your name: ")
+        self.address = input("\nEnter your address: ")
+        self.check_in_date = input("\nEnter your check-in date: ")
+        self.check_out_date = input("\nEnter your check-out date: ")
+        print("Your room no.:", self.room_number, "\n")
+        self.room_number += 1
+
+    def calculate_room_rent(self):
+        print("We have the following rooms for you:-")
+        print("1. Type A - Rs 6000 PN")
+        print("2. Type B - Rs 5000 PN")
+        print("3. Type C - Rs 4000 PN")
+        print("4. Type D - Rs 3000 PN")
+
+        room_type = int(input("Enter Your Choice Please: "))
+        nights_stay = int(input("For How Many Nights Did You Stay: "))
+
+        room_prices = {1: 6000, 2: 5000, 3: 4000, 4: 3000}
+
+        if room_type in room_prices:
+            self.room_rent = room_prices[room_type] * nights_stay
+            print(f"You have opted room type {chr(65 + room_type - 1)}")
+        else:
+            print("Invalid room choice.")
+
+        print("Your room rent is =", self.room_rent, "\n")
+
+    def calculate_restaurant_bill(self):
+        print("**RESTAURANT MENU**")
+        for key, value in self.RESTAURANT_MENU.items():
+            print(f"{key}. {value['name']} ----> Rs {value['price']}")
+
+        while True:
+            choice = int(input("Enter your choice (6 to exit): "))
+            if choice == 6:
+                break
+            elif choice in self.RESTAURANT_MENU:
+                quantity = int(input("Enter the quantity: "))
+                self.food_bill += self.RESTAURANT_MENU[choice]["price"] * quantity
+            else:
+                print("Invalid option")
+
+        print("Total food Cost = Rs", self.food_bill, "\n")
+
+    def calculate_laundry_bill(self):
+        print("***LAUNDRY OPTIONS**")
+        for key, value in self.LAUNDRY_OPTIONS.items():
+            print(f"{key}. {value['name']} ----> Rs {value['price']}")
+
+        while True:
+            choice = int(input("Enter your choice (6 to exit): "))
+            if choice == 6:
+                break
+            elif choice in self.LAUNDRY_OPTIONS:
+                quantity = int(input("Enter the quantity: "))
+                self.laundry_bill += self.LAUNDRY_OPTIONS[choice]["price"] * quantity
+            else:
+                print("Invalid option")
+
+        print("Total Laundry Cost = Rs", self.laundry_bill, "\n")
+
+    def calculate_game_bill(self):
+        print("***GAME SELECTIONS**")
+        for key, value in self.GAME_SELECTIONS.items():
+            print(f"{key}. {value['name']} ----> Rs {value['price']}")
+
+        while True:
+            choice = int(input("Enter your choice (6 to exit): "))
+            if choice == 6:
+                break
+            elif choice in self.GAME_SELECTIONS:
+                hours = int(input("No. of hours: "))
+                self.game_bill += self.GAME_SELECTIONS[choice]["price"] * hours
+            else:
+                print("Invalid option")
+
+        print("Total Game Bill = Rs", self.game_bill, "\n")
+
+    def show_total_cost(self):
+        total_cost = self.room_rent + self.food_bill + self.laundry_bill + self.game_bill + self.additional_charges
+        print("***HOTEL BILL***")
+        print("Customer details:")
+        print("Customer name:", self.name)
+        print("Customer address:", self.address)
+        print("Check-in date:", self.check_in_date)
+        print("Check-out date:", self.check_out_date)
+        print("Room no.:", self.room_number - 1)
+        print("Your Room rent is:", self.room_rent)
+        print("Your Food bill is:", self.food_bill)
+        print("Your Laundry bill is:", self.laundry_bill)
+        print("Your Game bill is:", self.game_bill)
+        print("Your subtotal bill is:", total_cost - self.additional_charges)
+        print("Additional Service Charges is:", self.additional_charges)
+        print("Your grand total bill is:", total_cost)
+
+def main():
+    hotel_reservation = HotelReservation()
+    
+    while True:
+        print("1. Enter Customer Data")
+        print("2. Calculate Room Rent")
+        print("3. Calculate Restaurant Bill")
+        print("4. Calculate Laundry Bill")
+        print("5. Calculate Game Bill")
+        print("6. Show Total Cost")
+        print("7. EXIT")
+
+        choice = int(input("\nEnter your choice: "))
+        if choice == 1:
+            hotel_reservation.input_data()
+        elif choice == 2:
+            hotel_reservation.calculate_room_rent()
+        elif choice == 3:
+            hotel_reservation.calculate_restaurant_bill()
+        elif choice == 4:
+            hotel_reservation.calculate_laundry_bill()
+        elif choice == 5:
+            hotel_reservation.calculate_game_bill()
+        elif choice == 6:
+            hotel_reservation.show_total_cost()
+        elif choice == 7:
+            sys.exit()
+        else:
+            print("Invalid choice. Please try again.")
+
+
+if __name__ == '__main__':
+    main()
